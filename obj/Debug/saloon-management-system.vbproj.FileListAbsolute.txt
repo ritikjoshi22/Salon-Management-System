@@ -103,7 +103,6 @@ C:\Users\Acer\source\repos\saloon-management-system\saloon-management-system\bin
 C:\Users\Acer\source\repos\saloon-management-system\saloon-management-system\bin\Debug\System.Drawing.Common.pdb
 C:\Users\Acer\source\repos\saloon-management-system\saloon-management-system\obj\Debug\saloon_management_system.Dashboard.resources
 C:\Users\Acer\source\repos\saloon-management-system\saloon-management-system\obj\Debug\saloon_management_system.Appointment.resources
-C:\Users\Acer\source\repos\saloon-management-system\saloon-management-system\obj\Debug\saloon_management_system.Services.resources
 C:\Users\Acer\source\repos\saloon-management-system\saloon-management-system\obj\Debug\saloon_management_system.Customer.resources
 C:\Users\Acer\source\repos\saloon-management-system\saloon-management-system\obj\Debug\saloon_management_system.Inventory.resources
 C:\Users\Acer\source\repos\saloon-management-system\saloon-management-system\obj\Debug\saloon_management_system.Employee.resources
@@ -120,3 +119,11 @@ C:\Users\Acer\source\repos\saloon-management-system\saloon-management-system\obj
 C:\Users\Acer\source\repos\saloon-management-system\saloon-management-system\obj\Debug\saloon_management_system.AddAppoinment.resources
 C:\Users\Acer\source\repos\saloon-management-system\saloon-management-system\obj\Debug\saloon_management_system.Signup.resources
 C:\Users\Acer\source\repos\saloon-management-system\saloon-management-system\obj\Debug\saloon_management_system.ManageUser.resources
+C:\Users\Acer\source\repos\saloon-management-system\saloon-management-system\obj\Debug\saloon_management_system.AddServices.resources
+C:\Users\Acer\source\repos\saloon-management-system\saloon-management-system\obj\Debug\saloon_management_system.Services.resources
+C:\Users\Acer\source\repos\saloon-management-system\saloon-management-system\obj\Debug\saloon_management_system.Checkout.resources
+C:\Users\Acer\source\repos\saloon-management-system\saloon-management-system\obj\Debug\saloon_management_system.qrCode.resources
+C:\Users\Acer\source\repos\saloon-management-system\saloon-management-system\obj\Debug\saloon_management_system.PaymentDetail.resources
+C:\Users\Acer\source\repos\saloon-management-system\saloon-management-system\obj\Debug\saloon_management_system.AppointmentDetailsForm.resources
+C:\Users\Acer\source\repos\saloon-management-system\saloon-management-system\obj\Debug\saloon_management_system.RescheduleAppointmentForm.resources
+C:\Users\Acer\source\repos\saloon-management-system\saloon-management-system\obj\Debug\saloon_management_system.loadingForm.resources

@@ -32,8 +32,6 @@ Partial Class Inventory
         Me.txtSearch = New Guna.UI2.WinForms.Guna2TextBox()
         Me.dgInventory = New System.Windows.Forms.DataGridView()
         Me.btnSearch = New Guna.UI2.WinForms.Guna2Button()
-        Me.btnDelete = New Guna.UI2.WinForms.Guna2Button()
-        Me.btnEdit = New Guna.UI2.WinForms.Guna2Button()
         Me.btnSave = New Guna.UI2.WinForms.Guna2Button()
         Me.txtCategory = New Guna.UI2.WinForms.Guna2TextBox()
         Me.txtSupplier = New Guna.UI2.WinForms.Guna2TextBox()
@@ -53,7 +51,7 @@ Partial Class Inventory
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(784, 142)
+        Me.Label6.Location = New System.Drawing.Point(904, 167)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(62, 16)
         Me.Label6.TabIndex = 29
@@ -62,7 +60,7 @@ Partial Class Inventory
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(789, 91)
+        Me.Label4.Location = New System.Drawing.Point(909, 116)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(57, 16)
         Me.Label4.TabIndex = 28
@@ -71,7 +69,7 @@ Partial Class Inventory
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(147, 142)
+        Me.Label3.Location = New System.Drawing.Point(260, 159)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(93, 16)
         Me.Label3.TabIndex = 27
@@ -80,7 +78,7 @@ Partial Class Inventory
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(160, 91)
+        Me.Label2.Location = New System.Drawing.Point(273, 108)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(69, 16)
         Me.Label2.TabIndex = 26
@@ -99,7 +97,7 @@ Partial Class Inventory
         Me.txtSearch.FocusedState.Parent = Me.txtSearch
         Me.txtSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.txtSearch.HoverState.Parent = Me.txtSearch
-        Me.txtSearch.Location = New System.Drawing.Point(509, 414)
+        Me.txtSearch.Location = New System.Drawing.Point(768, 433)
         Me.txtSearch.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtSearch.Name = "txtSearch"
         Me.txtSearch.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
@@ -137,65 +135,39 @@ Partial Class Inventory
         Me.dgInventory.DefaultCellStyle = DataGridViewCellStyle3
         Me.dgInventory.EnableHeadersVisualStyles = False
         Me.dgInventory.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.dgInventory.Location = New System.Drawing.Point(0, 475)
+        Me.dgInventory.Location = New System.Drawing.Point(247, 506)
         Me.dgInventory.Name = "dgInventory"
         Me.dgInventory.RowHeadersVisible = False
         Me.dgInventory.RowHeadersWidth = 51
         Me.dgInventory.RowTemplate.Height = 24
         Me.dgInventory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgInventory.Size = New System.Drawing.Size(1179, 310)
+        Me.dgInventory.Size = New System.Drawing.Size(1179, 535)
         Me.dgInventory.TabIndex = 24
         '
         'btnSearch
         '
+        Me.btnSearch.BorderRadius = 20
         Me.btnSearch.CheckedState.Parent = Me.btnSearch
         Me.btnSearch.CustomImages.Parent = Me.btnSearch
         Me.btnSearch.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.btnSearch.ForeColor = System.Drawing.Color.White
         Me.btnSearch.HoverState.Parent = Me.btnSearch
-        Me.btnSearch.Location = New System.Drawing.Point(792, 414)
+        Me.btnSearch.Location = New System.Drawing.Point(1051, 433)
         Me.btnSearch.Name = "btnSearch"
         Me.btnSearch.ShadowDecoration.Parent = Me.btnSearch
         Me.btnSearch.Size = New System.Drawing.Size(180, 45)
         Me.btnSearch.TabIndex = 23
         Me.btnSearch.Text = "Search"
         '
-        'btnDelete
-        '
-        Me.btnDelete.CheckedState.Parent = Me.btnDelete
-        Me.btnDelete.CustomImages.Parent = Me.btnDelete
-        Me.btnDelete.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.btnDelete.ForeColor = System.Drawing.Color.White
-        Me.btnDelete.HoverState.Parent = Me.btnDelete
-        Me.btnDelete.Location = New System.Drawing.Point(825, 321)
-        Me.btnDelete.Name = "btnDelete"
-        Me.btnDelete.ShadowDecoration.Parent = Me.btnDelete
-        Me.btnDelete.Size = New System.Drawing.Size(180, 45)
-        Me.btnDelete.TabIndex = 22
-        Me.btnDelete.Text = "Delete"
-        '
-        'btnEdit
-        '
-        Me.btnEdit.CheckedState.Parent = Me.btnEdit
-        Me.btnEdit.CustomImages.Parent = Me.btnEdit
-        Me.btnEdit.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.btnEdit.ForeColor = System.Drawing.Color.White
-        Me.btnEdit.HoverState.Parent = Me.btnEdit
-        Me.btnEdit.Location = New System.Drawing.Point(564, 321)
-        Me.btnEdit.Name = "btnEdit"
-        Me.btnEdit.ShadowDecoration.Parent = Me.btnEdit
-        Me.btnEdit.Size = New System.Drawing.Size(180, 45)
-        Me.btnEdit.TabIndex = 21
-        Me.btnEdit.Text = "Edit"
-        '
         'btnSave
         '
+        Me.btnSave.BorderRadius = 20
         Me.btnSave.CheckedState.Parent = Me.btnSave
         Me.btnSave.CustomImages.Parent = Me.btnSave
         Me.btnSave.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.btnSave.ForeColor = System.Drawing.Color.White
         Me.btnSave.HoverState.Parent = Me.btnSave
-        Me.btnSave.Location = New System.Drawing.Point(334, 321)
+        Me.btnSave.Location = New System.Drawing.Point(768, 324)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.ShadowDecoration.Parent = Me.btnSave
         Me.btnSave.Size = New System.Drawing.Size(180, 45)
@@ -215,7 +187,7 @@ Partial Class Inventory
         Me.txtCategory.FocusedState.Parent = Me.txtCategory
         Me.txtCategory.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.txtCategory.HoverState.Parent = Me.txtCategory
-        Me.txtCategory.Location = New System.Drawing.Point(853, 127)
+        Me.txtCategory.Location = New System.Drawing.Point(1017, 146)
         Me.txtCategory.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtCategory.Name = "txtCategory"
         Me.txtCategory.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
@@ -238,7 +210,7 @@ Partial Class Inventory
         Me.txtSupplier.FocusedState.Parent = Me.txtSupplier
         Me.txtSupplier.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.txtSupplier.HoverState.Parent = Me.txtSupplier
-        Me.txtSupplier.Location = New System.Drawing.Point(853, 75)
+        Me.txtSupplier.Location = New System.Drawing.Point(1017, 94)
         Me.txtSupplier.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtSupplier.Name = "txtSupplier"
         Me.txtSupplier.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
@@ -261,7 +233,7 @@ Partial Class Inventory
         Me.txtProductName.FocusedState.Parent = Me.txtProductName
         Me.txtProductName.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.txtProductName.HoverState.Parent = Me.txtProductName
-        Me.txtProductName.Location = New System.Drawing.Point(247, 127)
+        Me.txtProductName.Location = New System.Drawing.Point(411, 146)
         Me.txtProductName.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtProductName.Name = "txtProductName"
         Me.txtProductName.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
@@ -284,7 +256,7 @@ Partial Class Inventory
         Me.txtProductID.FocusedState.Parent = Me.txtProductID
         Me.txtProductID.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.txtProductID.HoverState.Parent = Me.txtProductID
-        Me.txtProductID.Location = New System.Drawing.Point(247, 75)
+        Me.txtProductID.Location = New System.Drawing.Point(411, 94)
         Me.txtProductID.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtProductID.Name = "txtProductID"
         Me.txtProductID.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
@@ -317,7 +289,7 @@ Partial Class Inventory
         Me.txtQuantity.FocusedState.Parent = Me.txtQuantity
         Me.txtQuantity.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.txtQuantity.HoverState.Parent = Me.txtQuantity
-        Me.txtQuantity.Location = New System.Drawing.Point(247, 179)
+        Me.txtQuantity.Location = New System.Drawing.Point(411, 198)
         Me.txtQuantity.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtQuantity.Name = "txtQuantity"
         Me.txtQuantity.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
@@ -340,7 +312,7 @@ Partial Class Inventory
         Me.txtPrice.FocusedState.Parent = Me.txtPrice
         Me.txtPrice.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.txtPrice.HoverState.Parent = Me.txtPrice
-        Me.txtPrice.Location = New System.Drawing.Point(247, 231)
+        Me.txtPrice.Location = New System.Drawing.Point(411, 250)
         Me.txtPrice.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtPrice.Name = "txtPrice"
         Me.txtPrice.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
@@ -353,7 +325,7 @@ Partial Class Inventory
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(174, 191)
+        Me.Label7.Location = New System.Drawing.Point(287, 208)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(55, 16)
         Me.Label7.TabIndex = 35
@@ -362,7 +334,7 @@ Partial Class Inventory
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(770, 191)
+        Me.Label8.Location = New System.Drawing.Point(890, 216)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(76, 16)
         Me.Label8.TabIndex = 36
@@ -371,7 +343,7 @@ Partial Class Inventory
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(191, 244)
+        Me.Label9.Location = New System.Drawing.Point(304, 261)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(38, 16)
         Me.Label9.TabIndex = 37
@@ -379,12 +351,13 @@ Partial Class Inventory
         '
         'BtnPrint
         '
+        Me.BtnPrint.BorderRadius = 20
         Me.BtnPrint.CheckedState.Parent = Me.BtnPrint
         Me.BtnPrint.CustomImages.Parent = Me.BtnPrint
         Me.BtnPrint.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.BtnPrint.ForeColor = System.Drawing.Color.White
         Me.BtnPrint.HoverState.Parent = Me.BtnPrint
-        Me.BtnPrint.Location = New System.Drawing.Point(987, 414)
+        Me.BtnPrint.Location = New System.Drawing.Point(1246, 433)
         Me.BtnPrint.Name = "BtnPrint"
         Me.BtnPrint.ShadowDecoration.Parent = Me.BtnPrint
         Me.BtnPrint.Size = New System.Drawing.Size(180, 45)
@@ -393,7 +366,7 @@ Partial Class Inventory
         '
         'dtpExpiryDate
         '
-        Me.dtpExpiryDate.Location = New System.Drawing.Point(853, 191)
+        Me.dtpExpiryDate.Location = New System.Drawing.Point(1017, 210)
         Me.dtpExpiryDate.Name = "dtpExpiryDate"
         Me.dtpExpiryDate.Size = New System.Drawing.Size(267, 22)
         Me.dtpExpiryDate.TabIndex = 39
@@ -403,7 +376,7 @@ Partial Class Inventory
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(241, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(1179, 788)
+        Me.ClientSize = New System.Drawing.Size(1655, 1033)
         Me.Controls.Add(Me.dtpExpiryDate)
         Me.Controls.Add(Me.BtnPrint)
         Me.Controls.Add(Me.Label9)
@@ -418,8 +391,6 @@ Partial Class Inventory
         Me.Controls.Add(Me.txtSearch)
         Me.Controls.Add(Me.dgInventory)
         Me.Controls.Add(Me.btnSearch)
-        Me.Controls.Add(Me.btnDelete)
-        Me.Controls.Add(Me.btnEdit)
         Me.Controls.Add(Me.btnSave)
         Me.Controls.Add(Me.txtCategory)
         Me.Controls.Add(Me.txtSupplier)
@@ -442,8 +413,6 @@ Partial Class Inventory
     Friend WithEvents txtSearch As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents dgInventory As DataGridView
     Friend WithEvents btnSearch As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents btnDelete As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents btnEdit As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents btnSave As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents txtCategory As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents txtSupplier As Guna.UI2.WinForms.Guna2TextBox

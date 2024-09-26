@@ -268,6 +268,30 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddServices.Designer.vb">
+      <DependentUpon>AddServices.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AddServices.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AppointmentDetailsForm.Designer.vb">
+      <DependentUpon>AppointmentDetailsForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AppointmentDetailsForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Checkout.Designer.vb">
+      <DependentUpon>Checkout.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Checkout.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="loadingForm.Designer.vb">
+      <DependentUpon>loadingForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="loadingForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Login.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -275,16 +299,34 @@
       <DependentUpon>Login.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form4.Designer.vb">
-      <DependentUpon>Form4.vb</DependentUpon>
+    <Compile Include="AddAppoinment.Designer.vb">
+      <DependentUpon>AddAppoinment.vb</DependentUpon>
     </Compile>
-    <Compile Include="Form4.vb">
+    <Compile Include="AddAppoinment.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ManageUser.Designer.vb">
       <DependentUpon>ManageUser.vb</DependentUpon>
     </Compile>
     <Compile Include="ManageUser.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PaymentDetail.Designer.vb">
+      <DependentUpon>PaymentDetail.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentDetail.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="qrCode.Designer.vb">
+      <DependentUpon>qrCode.vb</DependentUpon>
+    </Compile>
+    <Compile Include="qrCode.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RescheduleAppointmentForm.Designer.vb">
+      <DependentUpon>RescheduleAppointmentForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="RescheduleAppointmentForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Signup.Designer.vb">
@@ -353,14 +395,35 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AddServices.resx">
+      <DependentUpon>AddServices.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AppointmentDetailsForm.resx">
+      <DependentUpon>AppointmentDetailsForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Checkout.resx">
+      <DependentUpon>Checkout.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="loadingForm.resx">
+      <DependentUpon>loadingForm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form4.resx">
-      <DependentUpon>Form4.vb</DependentUpon>
+    <EmbeddedResource Include="AddAppoinment.resx">
+      <DependentUpon>AddAppoinment.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ManageUser.resx">
       <DependentUpon>ManageUser.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PaymentDetail.resx">
+      <DependentUpon>PaymentDetail.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="qrCode.resx">
+      <DependentUpon>qrCode.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RescheduleAppointmentForm.resx">
+      <DependentUpon>RescheduleAppointmentForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Signup.resx">
       <DependentUpon>Signup.vb</DependentUpon>

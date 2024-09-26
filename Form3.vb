@@ -1,4 +1,86 @@
 ﻿Public Class Form3
+
+    Private userRole As String
+    Private userFirstName As String
+    Private ProfilePicture As Byte()
+
+    ' Constructor to initialize the form with the user's role
+    Public Sub New(role As String, firstName As String, ProfilePicture As Byte())
+        InitializeComponent()
+        userRole = role
+        userFirstName = firstName
+        Me.ProfilePicture = ProfilePicture
+    End Sub
+
+    Private Sub RoundPanel(pnl As Panel)
+
+        ' Define the radius for the top-right corner
+        Dim radius As Integer = 30
+
+        ' Create a GraphicsPath to draw the panel with rounded top-right corner
+        Dim path As New Drawing2D.GraphicsPath()
+        path.StartFigure()
+
+        ' Top-left corner (no rounding)
+        path.AddLine(0, 0, pnl.Width - radius, 0)
+
+        ' Top-right corner (rounded)
+        path.AddArc(New Rectangle(pnl.Width - radius, 0, radius, radius), 270, 90)
+
+        ' Continue to the right edge
+        path.AddLine(pnl.Width, radius, pnl.Width, pnl.Height + 300)
+
+        ' Bottom-right corner (no rounding)
+        path.AddLine(pnl.Width, pnl.Height + 300, 0, pnl.Height + 300)
+
+        ' Bottom-left corner (no rounding)
+        path.AddLine(0, pnl.Height + 300, 0, 0)
+
+        path.CloseFigure()
+
+        ' Set the Region property to apply the rounded effect
+        pnl.Region = New Region(path)
+    End Sub
+
+    ' Form3_Load: Set the default form (Dashboard) when Form3 loads
+    Private Sub Form3_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' Set buttons visibility and default panel based on role
+        ConfigureAccessBasedOnRole()
+        RoundPanel(Panel2)
+
+    End Sub
+
+    ' Subroutine to handle role-based access control
+    Private Sub ConfigureAccessBasedOnRole()
+        Select Case userRole
+            Case "Admin"
+                ' Admin can access all features; default form is Dashboard
+                childform(New Dashboard(userFirstName, ProfilePicture))
+
+            Case "Manager"
+                ' Manager cannot access Dashboard and Manage Users
+                DashboardBtn.Enabled = False
+                ManageUserBtn.Enabled = False
+                childform(New Appointment) ' Manager's default form is Appointment
+
+            Case "User"
+                ' User can only access Services
+                DashboardBtn.Enabled = False
+                AppointmentBtn.Enabled = False
+                CustomerBtn.Enabled = False
+                InventoryBtn.Enabled = False
+                EmployeeBtn.Enabled = False
+                ManageUserBtn.Enabled = False
+                childform(New Services(ProfilePicture, userRole)) ' User's default form is Services
+
+            Case Else
+                ' Default case if role is undefined
+                MessageBox.Show("Invalid role", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Me.Close() ' Close form if the role is invalid
+        End Select
+    End Sub
+
+    ' Function to show child form inside Panel1
     Sub childform(ByVal panel As Form)
         Panel1.Controls.Clear()
         panel.TopLevel = False
@@ -8,14 +90,13 @@
         panel.Show()
     End Sub
 
-    ' Form3_Load: Set the default form (Dashboard) when Form3 loads
-    Private Sub Form3_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ' Automatically show Dashboard form when Form3 loads
-        childform(New Dashboard)
-    End Sub
 
     Private Sub DashboardBtn_Click(sender As Object, e As EventArgs) Handles DashboardBtn.Click
-        childform(New Dashboard)
+        If userRole = "Admin" Then
+            childform(New Dashboard(userFirstName, ProfilePicture))
+        Else
+            MessageBox.Show("This feature is not available in your current role.", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        End If
     End Sub
     Private Sub btnDashboard_MouseEnter(sender As Object, e As EventArgs) Handles DashboardBtn.MouseEnter
         DashboardBtn.ForeColor = Color.FromArgb(57, 74, 214) ' Change background color to white
@@ -28,7 +109,11 @@
     End Sub
 
     Private Sub AppointmentBtn_Click(sender As Object, e As EventArgs) Handles AppointmentBtn.Click
-        childform(New Appointment)
+        If userRole = "Admin" Or userRole = "Manager" Then
+            childform(New Appointment)
+        Else
+            MessageBox.Show("This feature is not available in your current role.", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        End If
     End Sub
 
     Private Sub AppointmentBtn_MouseEnter(sender As Object, e As EventArgs) Handles AppointmentBtn.MouseEnter
@@ -42,7 +127,8 @@
     End Sub
 
     Private Sub ServicesBtn_Click(sender As Object, e As EventArgs) Handles ServicesBtn.Click
-        childform(New Services)
+        ' All roles can access Services
+        childform(New Services(ProfilePicture, userRole))
     End Sub
     Private Sub ServicesBtn_MouseEnter(sender As Object, e As EventArgs) Handles ServicesBtn.MouseEnter
         ServicesBtn.ForeColor = Color.FromArgb(57, 74, 214) ' Change background color to white
@@ -55,7 +141,11 @@
     End Sub
 
     Private Sub CustomerBtn_Click(sender As Object, e As EventArgs) Handles CustomerBtn.Click
-        childform(New Customer)
+        If userRole = "Admin" Or userRole = "Manager" Then
+            childform(New Customer)
+        Else
+            MessageBox.Show("This feature is not available in your current role.", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        End If
     End Sub
     Private Sub CustomerBtn_MouseEnter(sender As Object, e As EventArgs) Handles CustomerBtn.MouseEnter
         CustomerBtn.ForeColor = Color.FromArgb(57, 74, 214) ' Change background color to white
@@ -68,7 +158,11 @@
     End Sub
 
     Private Sub InventoryBtn_Click(sender As Object, e As EventArgs) Handles InventoryBtn.Click
-        childform(New Inventory)
+        If userRole = "Admin" Or userRole = "Manager" Then
+            childform(New Inventory)
+        Else
+            MessageBox.Show("This feature is not available in your current role.", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        End If
     End Sub
     Private Sub InventoryBtn_MouseEnter(sender As Object, e As EventArgs) Handles InventoryBtn.MouseEnter
         InventoryBtn.ForeColor = Color.FromArgb(57, 74, 214) ' Change background color to white
@@ -81,7 +175,11 @@
     End Sub
 
     Private Sub EmployeeBtn_Click(sender As Object, e As EventArgs) Handles EmployeeBtn.Click
-        childform(New Employee)
+        If userRole = "Admin" Or userRole = "Manager" Then
+            childform(New Employee)
+        Else
+            MessageBox.Show("This feature is not available in your current role.", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        End If
     End Sub
     Private Sub EmployeeBtn_MouseEnter(sender As Object, e As EventArgs) Handles EmployeeBtn.MouseEnter
         EmployeeBtn.ForeColor = Color.FromArgb(57, 74, 214) ' Change background color to white
@@ -94,7 +192,11 @@
     End Sub
 
     Private Sub ManageUserBtn_Click(sender As Object, e As EventArgs) Handles ManageUserBtn.Click
-        childform(New ManageUser)
+        If userRole = "Admin" Then
+            childform(New ManageUser)
+        Else
+            MessageBox.Show("This feature is not available in your current role.", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        End If
     End Sub
     Private Sub ManageUserBtn_MouseEnter(sender As Object, e As EventArgs) Handles ManageUserBtn.MouseEnter
         ManageUserBtn.ForeColor = Color.FromArgb(57, 74, 214) ' Change background color to white
@@ -105,10 +207,8 @@
         ManageUserBtn.ForeColor = Color.FromArgb(57, 74, 214) ' Revert background color to original
         ManageUserBtn.BackColor = Color.White ' Revert foreground color to white
     End Sub
-
-    Private Sub Guna2CirclePictureBox1_Click(sender As Object, e As EventArgs) Handles Guna2CirclePictureBox1.Click
+    Private Sub btnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
         Me.Close()
-        Login.Close()
+        Login.Show()
     End Sub
-
 End Class

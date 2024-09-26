@@ -23,7 +23,9 @@ Partial Class Form3
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form3))
+        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.btnLogout = New System.Windows.Forms.Button()
         Me.Panel10 = New System.Windows.Forms.Panel()
         Me.ManageUserBtn = New System.Windows.Forms.Button()
         Me.Panel9 = New System.Windows.Forms.Panel()
@@ -39,9 +41,7 @@ Partial Class Form3
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.DashboardBtn = New System.Windows.Forms.Button()
         Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Guna2CirclePictureBox1 = New Guna.UI2.WinForms.Guna2CirclePictureBox()
-        Me.PanelHeader = New System.Windows.Forms.Panel()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Panel2.SuspendLayout()
         Me.Panel10.SuspendLayout()
         Me.Panel9.SuspendLayout()
@@ -50,13 +50,25 @@ Partial Class Form3
         Me.Panel6.SuspendLayout()
         Me.Panel5.SuspendLayout()
         Me.Panel4.SuspendLayout()
-        CType(Me.Guna2CirclePictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.PanelHeader.SuspendLayout()
+        Me.Panel3.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
+        '
+        'Panel1
+        '
+        Me.Panel1.AutoSize = True
+        Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(241, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel1.Location = New System.Drawing.Point(247, 20)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(1653, 1011)
+        Me.Panel1.TabIndex = 2
         '
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.Color.White
+        Me.Panel2.Controls.Add(Me.btnLogout)
         Me.Panel2.Controls.Add(Me.Panel10)
         Me.Panel2.Controls.Add(Me.Panel9)
         Me.Panel2.Controls.Add(Me.Panel8)
@@ -66,10 +78,24 @@ Partial Class Form3
         Me.Panel2.Controls.Add(Me.Panel4)
         Me.Panel2.Controls.Add(Me.Panel3)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Panel2.Location = New System.Drawing.Point(0, 39)
+        Me.Panel2.Location = New System.Drawing.Point(0, 20)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(247, 788)
+        Me.Panel2.Size = New System.Drawing.Size(247, 1011)
         Me.Panel2.TabIndex = 1
+        '
+        'btnLogout
+        '
+        Me.btnLogout.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.btnLogout.ForeColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(74, Byte), Integer), CType(CType(214, Byte), Integer))
+        Me.btnLogout.Image = CType(resources.GetObject("btnLogout.Image"), System.Drawing.Image)
+        Me.btnLogout.Location = New System.Drawing.Point(0, 946)
+        Me.btnLogout.Name = "btnLogout"
+        Me.btnLogout.Padding = New System.Windows.Forms.Padding(50, 0, 0, 0)
+        Me.btnLogout.Size = New System.Drawing.Size(247, 65)
+        Me.btnLogout.TabIndex = 4
+        Me.btnLogout.Text = "Log out"
+        Me.btnLogout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnLogout.UseVisualStyleBackColor = True
         '
         'Panel10
         '
@@ -234,7 +260,7 @@ Partial Class Form3
         Me.DashboardBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.DashboardBtn.Location = New System.Drawing.Point(0, 0)
         Me.DashboardBtn.Name = "DashboardBtn"
-        Me.DashboardBtn.Padding = New System.Windows.Forms.Padding(65, 0, 0, 0)
+        Me.DashboardBtn.Padding = New System.Windows.Forms.Padding(60, 0, 0, 0)
         Me.DashboardBtn.Size = New System.Drawing.Size(247, 44)
         Me.DashboardBtn.TabIndex = 0
         Me.DashboardBtn.Text = "Dashboard"
@@ -243,57 +269,38 @@ Partial Class Form3
         '
         'Panel3
         '
+        Me.Panel3.Controls.Add(Me.PictureBox1)
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel3.Location = New System.Drawing.Point(0, 0)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(247, 131)
         Me.Panel3.TabIndex = 0
         '
-        'Panel1
+        'PictureBox1
         '
-        Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(241, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.Panel1.Location = New System.Drawing.Point(246, 39)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1179, 788)
-        Me.Panel1.TabIndex = 2
-        '
-        'Guna2CirclePictureBox1
-        '
-        Me.Guna2CirclePictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.Guna2CirclePictureBox1.Image = CType(resources.GetObject("Guna2CirclePictureBox1.Image"), System.Drawing.Image)
-        Me.Guna2CirclePictureBox1.Location = New System.Drawing.Point(1389, 3)
-        Me.Guna2CirclePictureBox1.Name = "Guna2CirclePictureBox1"
-        Me.Guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
-        Me.Guna2CirclePictureBox1.ShadowDecoration.Parent = Me.Guna2CirclePictureBox1
-        Me.Guna2CirclePictureBox1.Size = New System.Drawing.Size(33, 30)
-        Me.Guna2CirclePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.Guna2CirclePictureBox1.TabIndex = 0
-        Me.Guna2CirclePictureBox1.TabStop = False
-        '
-        'PanelHeader
-        '
-        Me.PanelHeader.BackColor = System.Drawing.Color.FromArgb(CType(CType(241, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.PanelHeader.Controls.Add(Me.Guna2CirclePictureBox1)
-        Me.PanelHeader.Dock = System.Windows.Forms.DockStyle.Top
-        Me.PanelHeader.Location = New System.Drawing.Point(0, 0)
-        Me.PanelHeader.Name = "PanelHeader"
-        Me.PanelHeader.Size = New System.Drawing.Size(1425, 39)
-        Me.PanelHeader.TabIndex = 0
+        Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
+        Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(247, 131)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox1.TabIndex = 0
+        Me.PictureBox1.TabStop = False
         '
         'Form3
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(241, Byte), Integer), CType(CType(244, Byte), Integer), CType(CType(254, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(1425, 827)
+        Me.ClientSize = New System.Drawing.Size(1900, 1031)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Panel2)
-        Me.Controls.Add(Me.PanelHeader)
         Me.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.MinimumSize = New System.Drawing.Size(1918, 1078)
         Me.Name = "Form3"
+        Me.Padding = New System.Windows.Forms.Padding(0, 20, 0, 0)
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Dashboard"
         Me.Panel2.ResumeLayout(False)
@@ -304,16 +311,14 @@ Partial Class Form3
         Me.Panel6.ResumeLayout(False)
         Me.Panel5.ResumeLayout(False)
         Me.Panel4.ResumeLayout(False)
-        CType(Me.Guna2CirclePictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.PanelHeader.ResumeLayout(False)
+        Me.Panel3.ResumeLayout(False)
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
-    Friend WithEvents Panel2 As Panel
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents Panel5 As Panel
-    Friend WithEvents Panel4 As Panel
-    Friend WithEvents Panel3 As Panel
+    Friend WithEvents Panel2 As Panel
     Friend WithEvents Panel10 As Panel
     Friend WithEvents ManageUserBtn As Button
     Friend WithEvents Panel9 As Panel
@@ -324,8 +329,11 @@ Partial Class Form3
     Friend WithEvents CustomerBtn As Button
     Friend WithEvents Panel6 As Panel
     Friend WithEvents ServicesBtn As Button
-    Friend WithEvents DashboardBtn As Button
+    Friend WithEvents Panel5 As Panel
     Friend WithEvents AppointmentBtn As Button
-    Friend WithEvents Guna2CirclePictureBox1 As Guna.UI2.WinForms.Guna2CirclePictureBox
-    Friend WithEvents PanelHeader As Panel
+    Friend WithEvents Panel4 As Panel
+    Friend WithEvents DashboardBtn As Button
+    Friend WithEvents Panel3 As Panel
+    Friend WithEvents btnLogout As Button
+    Friend WithEvents PictureBox1 As PictureBox
 End Class

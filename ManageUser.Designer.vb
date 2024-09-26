@@ -42,14 +42,14 @@ Partial Class ManageUser
         Me.ComboBoxRole = New Guna.UI2.WinForms.Guna2ComboBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.btnSave = New Guna.UI2.WinForms.Guna2Button()
-        Me.btnEdit = New Guna.UI2.WinForms.Guna2Button()
-        Me.btnDelete = New Guna.UI2.WinForms.Guna2Button()
         Me.txtEmail = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.ComboBox1 = New Guna.UI2.WinForms.Guna2ComboBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.txtUserID = New Guna.UI2.WinForms.Guna2TextBox()
         CType(Me.dataGridViewUsers, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pictureBoxUser, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnAddPicture, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -83,13 +83,13 @@ Partial Class ManageUser
         Me.dataGridViewUsers.DefaultCellStyle = DataGridViewCellStyle3
         Me.dataGridViewUsers.EnableHeadersVisualStyles = False
         Me.dataGridViewUsers.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.dataGridViewUsers.Location = New System.Drawing.Point(-2, 402)
+        Me.dataGridViewUsers.Location = New System.Drawing.Point(220, 462)
         Me.dataGridViewUsers.Name = "dataGridViewUsers"
         Me.dataGridViewUsers.RowHeadersVisible = False
         Me.dataGridViewUsers.RowHeadersWidth = 51
         Me.dataGridViewUsers.RowTemplate.Height = 24
         Me.dataGridViewUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dataGridViewUsers.Size = New System.Drawing.Size(1180, 385)
+        Me.dataGridViewUsers.Size = New System.Drawing.Size(1180, 559)
         Me.dataGridViewUsers.TabIndex = 25
         '
         'Label1
@@ -104,12 +104,12 @@ Partial Class ManageUser
         '
         'pictureBoxUser
         '
-        Me.pictureBoxUser.BackColor = System.Drawing.SystemColors.ActiveBorder
-        Me.pictureBoxUser.Location = New System.Drawing.Point(96, 76)
+        Me.pictureBoxUser.BackColor = System.Drawing.Color.FromArgb(CType(CType(241, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.pictureBoxUser.Location = New System.Drawing.Point(195, 93)
         Me.pictureBoxUser.Name = "pictureBoxUser"
         Me.pictureBoxUser.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
         Me.pictureBoxUser.ShadowDecoration.Parent = Me.pictureBoxUser
-        Me.pictureBoxUser.Size = New System.Drawing.Size(165, 143)
+        Me.pictureBoxUser.Size = New System.Drawing.Size(165, 201)
         Me.pictureBoxUser.TabIndex = 27
         Me.pictureBoxUser.TabStop = False
         '
@@ -117,7 +117,7 @@ Partial Class ManageUser
         '
         Me.btnAddPicture.BackColor = System.Drawing.SystemColors.ActiveBorder
         Me.btnAddPicture.Image = CType(resources.GetObject("btnAddPicture.Image"), System.Drawing.Image)
-        Me.btnAddPicture.Location = New System.Drawing.Point(234, 188)
+        Me.btnAddPicture.Location = New System.Drawing.Point(333, 263)
         Me.btnAddPicture.Name = "btnAddPicture"
         Me.btnAddPicture.Size = New System.Drawing.Size(27, 31)
         Me.btnAddPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -139,7 +139,7 @@ Partial Class ManageUser
         Me.txtFirstName.FocusedState.Parent = Me.txtFirstName
         Me.txtFirstName.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.txtFirstName.HoverState.Parent = Me.txtFirstName
-        Me.txtFirstName.Location = New System.Drawing.Point(404, 76)
+        Me.txtFirstName.Location = New System.Drawing.Point(583, 159)
         Me.txtFirstName.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtFirstName.Name = "txtFirstName"
         Me.txtFirstName.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
@@ -152,7 +152,7 @@ Partial Class ManageUser
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(325, 95)
+        Me.Label3.Location = New System.Drawing.Point(463, 169)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(72, 16)
         Me.Label3.TabIndex = 30
@@ -161,7 +161,7 @@ Partial Class ManageUser
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(697, 95)
+        Me.Label2.Location = New System.Drawing.Point(994, 132)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(70, 16)
         Me.Label2.TabIndex = 31
@@ -182,7 +182,7 @@ Partial Class ManageUser
         Me.txtUserName.FocusedState.Parent = Me.txtUserName
         Me.txtUserName.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.txtUserName.HoverState.Parent = Me.txtUserName
-        Me.txtUserName.Location = New System.Drawing.Point(777, 76)
+        Me.txtUserName.Location = New System.Drawing.Point(1090, 113)
         Me.txtUserName.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtUserName.Name = "txtUserName"
         Me.txtUserName.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
@@ -207,7 +207,7 @@ Partial Class ManageUser
         Me.txtLastName.FocusedState.Parent = Me.txtLastName
         Me.txtLastName.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.txtLastName.HoverState.Parent = Me.txtLastName
-        Me.txtLastName.Location = New System.Drawing.Point(404, 128)
+        Me.txtLastName.Location = New System.Drawing.Point(583, 211)
         Me.txtLastName.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtLastName.Name = "txtLastName"
         Me.txtLastName.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
@@ -232,7 +232,7 @@ Partial Class ManageUser
         Me.txtPassword.FocusedState.Parent = Me.txtPassword
         Me.txtPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.txtPassword.HoverState.Parent = Me.txtPassword
-        Me.txtPassword.Location = New System.Drawing.Point(777, 128)
+        Me.txtPassword.Location = New System.Drawing.Point(1090, 165)
         Me.txtPassword.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtPassword.Name = "txtPassword"
         Me.txtPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
@@ -245,7 +245,7 @@ Partial Class ManageUser
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(325, 139)
+        Me.Label4.Location = New System.Drawing.Point(463, 213)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(72, 16)
         Me.Label4.TabIndex = 35
@@ -254,7 +254,7 @@ Partial Class ManageUser
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(698, 146)
+        Me.Label5.Location = New System.Drawing.Point(995, 183)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(67, 16)
         Me.Label5.TabIndex = 36
@@ -267,7 +267,7 @@ Partial Class ManageUser
         Me.chkShowPassword.CheckedState.BorderRadius = 2
         Me.chkShowPassword.CheckedState.BorderThickness = 0
         Me.chkShowPassword.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.chkShowPassword.Location = New System.Drawing.Point(1026, 145)
+        Me.chkShowPassword.Location = New System.Drawing.Point(1339, 182)
         Me.chkShowPassword.Name = "chkShowPassword"
         Me.chkShowPassword.Size = New System.Drawing.Size(18, 17)
         Me.chkShowPassword.TabIndex = 37
@@ -290,7 +290,7 @@ Partial Class ManageUser
         Me.ComboBoxRole.HoverState.Parent = Me.ComboBoxRole
         Me.ComboBoxRole.ItemHeight = 30
         Me.ComboBoxRole.ItemsAppearance.Parent = Me.ComboBoxRole
-        Me.ComboBoxRole.Location = New System.Drawing.Point(777, 221)
+        Me.ComboBoxRole.Location = New System.Drawing.Point(1090, 258)
         Me.ComboBoxRole.Name = "ComboBoxRole"
         Me.ComboBoxRole.ShadowDecoration.Parent = Me.ComboBoxRole
         Me.ComboBoxRole.Size = New System.Drawing.Size(267, 36)
@@ -299,7 +299,7 @@ Partial Class ManageUser
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(729, 229)
+        Me.Label6.Location = New System.Drawing.Point(1026, 266)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(36, 16)
         Me.Label6.TabIndex = 39
@@ -314,44 +314,12 @@ Partial Class ManageUser
         Me.btnSave.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.btnSave.ForeColor = System.Drawing.Color.White
         Me.btnSave.HoverState.Parent = Me.btnSave
-        Me.btnSave.Location = New System.Drawing.Point(393, 351)
+        Me.btnSave.Location = New System.Drawing.Point(754, 381)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.ShadowDecoration.Parent = Me.btnSave
-        Me.btnSave.Size = New System.Drawing.Size(126, 45)
+        Me.btnSave.Size = New System.Drawing.Size(258, 45)
         Me.btnSave.TabIndex = 40
         Me.btnSave.Text = "Save"
-        '
-        'btnEdit
-        '
-        Me.btnEdit.BorderColor = System.Drawing.Color.Transparent
-        Me.btnEdit.BorderRadius = 20
-        Me.btnEdit.CheckedState.Parent = Me.btnEdit
-        Me.btnEdit.CustomImages.Parent = Me.btnEdit
-        Me.btnEdit.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.btnEdit.ForeColor = System.Drawing.Color.White
-        Me.btnEdit.HoverState.Parent = Me.btnEdit
-        Me.btnEdit.Location = New System.Drawing.Point(644, 351)
-        Me.btnEdit.Name = "btnEdit"
-        Me.btnEdit.ShadowDecoration.Parent = Me.btnEdit
-        Me.btnEdit.Size = New System.Drawing.Size(126, 45)
-        Me.btnEdit.TabIndex = 41
-        Me.btnEdit.Text = "Edit"
-        '
-        'btnDelete
-        '
-        Me.btnDelete.BorderColor = System.Drawing.Color.Transparent
-        Me.btnDelete.BorderRadius = 20
-        Me.btnDelete.CheckedState.Parent = Me.btnDelete
-        Me.btnDelete.CustomImages.Parent = Me.btnDelete
-        Me.btnDelete.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.btnDelete.ForeColor = System.Drawing.Color.White
-        Me.btnDelete.HoverState.Parent = Me.btnDelete
-        Me.btnDelete.Location = New System.Drawing.Point(845, 351)
-        Me.btnDelete.Name = "btnDelete"
-        Me.btnDelete.ShadowDecoration.Parent = Me.btnDelete
-        Me.btnDelete.Size = New System.Drawing.Size(126, 45)
-        Me.btnDelete.TabIndex = 42
-        Me.btnDelete.Text = "Delete"
         '
         'txtEmail
         '
@@ -368,7 +336,7 @@ Partial Class ManageUser
         Me.txtEmail.FocusedState.Parent = Me.txtEmail
         Me.txtEmail.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.txtEmail.HoverState.Parent = Me.txtEmail
-        Me.txtEmail.Location = New System.Drawing.Point(404, 180)
+        Me.txtEmail.Location = New System.Drawing.Point(583, 263)
         Me.txtEmail.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtEmail.Name = "txtEmail"
         Me.txtEmail.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
@@ -381,7 +349,7 @@ Partial Class ManageUser
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(356, 188)
+        Me.Label7.Location = New System.Drawing.Point(494, 262)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(41, 16)
         Me.Label7.TabIndex = 44
@@ -400,7 +368,7 @@ Partial Class ManageUser
         Me.ComboBox1.HoverState.Parent = Me.ComboBox1
         Me.ComboBox1.ItemHeight = 30
         Me.ComboBox1.ItemsAppearance.Parent = Me.ComboBox1
-        Me.ComboBox1.Location = New System.Drawing.Point(777, 179)
+        Me.ComboBox1.Location = New System.Drawing.Point(1090, 216)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.ShadowDecoration.Parent = Me.ComboBox1
         Me.ComboBox1.Size = New System.Drawing.Size(267, 36)
@@ -409,7 +377,7 @@ Partial Class ManageUser
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(718, 188)
+        Me.Label8.Location = New System.Drawing.Point(1015, 225)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(52, 16)
         Me.Label8.TabIndex = 46
@@ -417,7 +385,7 @@ Partial Class ManageUser
         '
         'DateTimePicker1
         '
-        Me.DateTimePicker1.Location = New System.Drawing.Point(404, 245)
+        Me.DateTimePicker1.Location = New System.Drawing.Point(583, 328)
         Me.DateTimePicker1.Name = "DateTimePicker1"
         Me.DateTimePicker1.Size = New System.Drawing.Size(267, 22)
         Me.DateTimePicker1.TabIndex = 47
@@ -425,26 +393,60 @@ Partial Class ManageUser
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(356, 251)
+        Me.Label9.Location = New System.Drawing.Point(494, 325)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(36, 16)
         Me.Label9.TabIndex = 48
         Me.Label9.Text = "DOB"
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(463, 111)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(52, 16)
+        Me.Label10.TabIndex = 50
+        Me.Label10.Text = "User ID"
+        '
+        'txtUserID
+        '
+        Me.txtUserID.AccessibleDescription = ""
+        Me.txtUserID.AccessibleName = ""
+        Me.txtUserID.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtUserID.DefaultText = ""
+        Me.txtUserID.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.txtUserID.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.txtUserID.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.txtUserID.DisabledState.Parent = Me.txtUserID
+        Me.txtUserID.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.txtUserID.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.txtUserID.FocusedState.Parent = Me.txtUserID
+        Me.txtUserID.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.txtUserID.HoverState.Parent = Me.txtUserID
+        Me.txtUserID.Location = New System.Drawing.Point(583, 101)
+        Me.txtUserID.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtUserID.Name = "txtUserID"
+        Me.txtUserID.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.txtUserID.PlaceholderText = ""
+        Me.txtUserID.SelectedText = ""
+        Me.txtUserID.ShadowDecoration.Parent = Me.txtUserID
+        Me.txtUserID.Size = New System.Drawing.Size(267, 44)
+        Me.txtUserID.TabIndex = 49
         '
         'ManageUser
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(241, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(1179, 788)
+        Me.ClientSize = New System.Drawing.Size(1655, 1033)
+        Me.Controls.Add(Me.Label10)
+        Me.Controls.Add(Me.txtUserID)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.DateTimePicker1)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.ComboBox1)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.txtEmail)
-        Me.Controls.Add(Me.btnDelete)
-        Me.Controls.Add(Me.btnEdit)
         Me.Controls.Add(Me.btnSave)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.ComboBoxRole)
@@ -488,12 +490,12 @@ Partial Class ManageUser
     Friend WithEvents ComboBoxRole As Guna.UI2.WinForms.Guna2ComboBox
     Friend WithEvents Label6 As Label
     Friend WithEvents btnSave As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents btnEdit As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents btnDelete As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents txtEmail As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Label7 As Label
     Friend WithEvents ComboBox1 As Guna.UI2.WinForms.Guna2ComboBox
     Friend WithEvents Label8 As Label
     Friend WithEvents DateTimePicker1 As DateTimePicker
     Friend WithEvents Label9 As Label
+    Friend WithEvents Label10 As Label
+    Friend WithEvents txtUserID As Guna.UI2.WinForms.Guna2TextBox
 End Class

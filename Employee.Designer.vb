@@ -32,8 +32,6 @@ Partial Class Employee
         Me.txtSearch = New Guna.UI2.WinForms.Guna2TextBox()
         Me.dgEmployees = New System.Windows.Forms.DataGridView()
         Me.btnSearch = New Guna.UI2.WinForms.Guna2Button()
-        Me.btnDelete = New Guna.UI2.WinForms.Guna2Button()
-        Me.btnEdit = New Guna.UI2.WinForms.Guna2Button()
         Me.btnSave = New Guna.UI2.WinForms.Guna2Button()
         Me.txtPosition = New Guna.UI2.WinForms.Guna2TextBox()
         Me.txtPhone = New Guna.UI2.WinForms.Guna2TextBox()
@@ -46,7 +44,7 @@ Partial Class Employee
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(791, 163)
+        Me.Label6.Location = New System.Drawing.Point(909, 193)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(55, 16)
         Me.Label6.TabIndex = 29
@@ -55,7 +53,7 @@ Partial Class Employee
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(791, 103)
+        Me.Label4.Location = New System.Drawing.Point(932, 133)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(46, 16)
         Me.Label4.TabIndex = 28
@@ -64,7 +62,7 @@ Partial Class Employee
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(174, 163)
+        Me.Label3.Location = New System.Drawing.Point(315, 193)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(44, 16)
         Me.Label3.TabIndex = 27
@@ -73,7 +71,7 @@ Partial Class Employee
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(138, 103)
+        Me.Label2.Location = New System.Drawing.Point(274, 133)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(85, 16)
         Me.Label2.TabIndex = 26
@@ -92,7 +90,7 @@ Partial Class Employee
         Me.txtSearch.FocusedState.Parent = Me.txtSearch
         Me.txtSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.txtSearch.HoverState.Parent = Me.txtSearch
-        Me.txtSearch.Location = New System.Drawing.Point(692, 415)
+        Me.txtSearch.Location = New System.Drawing.Point(833, 445)
         Me.txtSearch.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtSearch.Name = "txtSearch"
         Me.txtSearch.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
@@ -130,7 +128,7 @@ Partial Class Employee
         Me.dgEmployees.DefaultCellStyle = DataGridViewCellStyle3
         Me.dgEmployees.EnableHeadersVisualStyles = False
         Me.dgEmployees.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.dgEmployees.Location = New System.Drawing.Point(0, 475)
+        Me.dgEmployees.Location = New System.Drawing.Point(231, 514)
         Me.dgEmployees.Name = "dgEmployees"
         Me.dgEmployees.RowHeadersVisible = False
         Me.dgEmployees.RowHeadersWidth = 51
@@ -141,57 +139,31 @@ Partial Class Employee
         '
         'btnSearch
         '
+        Me.btnSearch.BorderRadius = 20
         Me.btnSearch.CheckedState.Parent = Me.btnSearch
         Me.btnSearch.CustomImages.Parent = Me.btnSearch
         Me.btnSearch.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.btnSearch.ForeColor = System.Drawing.Color.White
         Me.btnSearch.HoverState.Parent = Me.btnSearch
-        Me.btnSearch.Location = New System.Drawing.Point(977, 414)
+        Me.btnSearch.Location = New System.Drawing.Point(1118, 444)
         Me.btnSearch.Name = "btnSearch"
         Me.btnSearch.ShadowDecoration.Parent = Me.btnSearch
-        Me.btnSearch.Size = New System.Drawing.Size(180, 45)
+        Me.btnSearch.Size = New System.Drawing.Size(214, 45)
         Me.btnSearch.TabIndex = 23
         Me.btnSearch.Text = "Search"
         '
-        'btnDelete
-        '
-        Me.btnDelete.CheckedState.Parent = Me.btnDelete
-        Me.btnDelete.CustomImages.Parent = Me.btnDelete
-        Me.btnDelete.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.btnDelete.ForeColor = System.Drawing.Color.White
-        Me.btnDelete.HoverState.Parent = Me.btnDelete
-        Me.btnDelete.Location = New System.Drawing.Point(853, 249)
-        Me.btnDelete.Name = "btnDelete"
-        Me.btnDelete.ShadowDecoration.Parent = Me.btnDelete
-        Me.btnDelete.Size = New System.Drawing.Size(180, 45)
-        Me.btnDelete.TabIndex = 22
-        Me.btnDelete.Text = "Delete"
-        '
-        'btnEdit
-        '
-        Me.btnEdit.CheckedState.Parent = Me.btnEdit
-        Me.btnEdit.CustomImages.Parent = Me.btnEdit
-        Me.btnEdit.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.btnEdit.ForeColor = System.Drawing.Color.White
-        Me.btnEdit.HoverState.Parent = Me.btnEdit
-        Me.btnEdit.Location = New System.Drawing.Point(574, 249)
-        Me.btnEdit.Name = "btnEdit"
-        Me.btnEdit.ShadowDecoration.Parent = Me.btnEdit
-        Me.btnEdit.Size = New System.Drawing.Size(180, 45)
-        Me.btnEdit.TabIndex = 21
-        Me.btnEdit.Text = "Edit"
-        '
         'btnSave
         '
+        Me.btnSave.BorderRadius = 20
         Me.btnSave.CheckedState.Parent = Me.btnSave
         Me.btnSave.CustomImages.Parent = Me.btnSave
         Me.btnSave.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.btnSave.ForeColor = System.Drawing.Color.White
         Me.btnSave.HoverState.Parent = Me.btnSave
-        Me.btnSave.Location = New System.Drawing.Point(301, 249)
+        Me.btnSave.Location = New System.Drawing.Point(692, 314)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.ShadowDecoration.Parent = Me.btnSave
-        Me.btnSave.Size = New System.Drawing.Size(180, 45)
+        Me.btnSave.Size = New System.Drawing.Size(214, 45)
         Me.btnSave.TabIndex = 20
         Me.btnSave.Text = "Save"
         '
@@ -208,7 +180,7 @@ Partial Class Employee
         Me.txtPosition.FocusedState.Parent = Me.txtPosition
         Me.txtPosition.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.txtPosition.HoverState.Parent = Me.txtPosition
-        Me.txtPosition.Location = New System.Drawing.Point(853, 152)
+        Me.txtPosition.Location = New System.Drawing.Point(994, 182)
         Me.txtPosition.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtPosition.Name = "txtPosition"
         Me.txtPosition.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
@@ -231,7 +203,7 @@ Partial Class Employee
         Me.txtPhone.FocusedState.Parent = Me.txtPhone
         Me.txtPhone.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.txtPhone.HoverState.Parent = Me.txtPhone
-        Me.txtPhone.Location = New System.Drawing.Point(853, 91)
+        Me.txtPhone.Location = New System.Drawing.Point(994, 121)
         Me.txtPhone.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtPhone.Name = "txtPhone"
         Me.txtPhone.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
@@ -254,7 +226,7 @@ Partial Class Employee
         Me.txtEmployeeName.FocusedState.Parent = Me.txtEmployeeName
         Me.txtEmployeeName.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.txtEmployeeName.HoverState.Parent = Me.txtEmployeeName
-        Me.txtEmployeeName.Location = New System.Drawing.Point(247, 152)
+        Me.txtEmployeeName.Location = New System.Drawing.Point(388, 182)
         Me.txtEmployeeName.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtEmployeeName.Name = "txtEmployeeName"
         Me.txtEmployeeName.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
@@ -277,7 +249,7 @@ Partial Class Employee
         Me.txtEmployeeID.FocusedState.Parent = Me.txtEmployeeID
         Me.txtEmployeeID.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.txtEmployeeID.HoverState.Parent = Me.txtEmployeeID
-        Me.txtEmployeeID.Location = New System.Drawing.Point(247, 91)
+        Me.txtEmployeeID.Location = New System.Drawing.Point(388, 121)
         Me.txtEmployeeID.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtEmployeeID.Name = "txtEmployeeID"
         Me.txtEmployeeID.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
@@ -302,7 +274,7 @@ Partial Class Employee
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(241, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(1179, 788)
+        Me.ClientSize = New System.Drawing.Size(1655, 1033)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
@@ -310,8 +282,6 @@ Partial Class Employee
         Me.Controls.Add(Me.txtSearch)
         Me.Controls.Add(Me.dgEmployees)
         Me.Controls.Add(Me.btnSearch)
-        Me.Controls.Add(Me.btnDelete)
-        Me.Controls.Add(Me.btnEdit)
         Me.Controls.Add(Me.btnSave)
         Me.Controls.Add(Me.txtPosition)
         Me.Controls.Add(Me.txtPhone)
@@ -334,8 +304,6 @@ Partial Class Employee
     Friend WithEvents txtSearch As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents dgEmployees As DataGridView
     Friend WithEvents btnSearch As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents btnDelete As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents btnEdit As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents btnSave As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents txtPosition As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents txtPhone As Guna.UI2.WinForms.Guna2TextBox

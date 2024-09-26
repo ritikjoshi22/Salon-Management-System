@@ -19,8 +19,29 @@ Public Class Employee
                 Dim dt As New DataTable()
                 adapter.Fill(dt)
                 dgEmployees.DataSource = dt
+
+                ' Add Edit button column only if it hasn't been added yet
+                If dgEmployees.Columns("Edit") Is Nothing Then
+                    Dim btnEdit As New DataGridViewButtonColumn()
+                    btnEdit.HeaderText = "Edit"
+                    btnEdit.Name = "Edit"
+                    btnEdit.Text = "Edit"
+                    btnEdit.UseColumnTextForButtonValue = True
+                    dgEmployees.Columns.Add(btnEdit)
+                    dgEmployees.AllowUserToAddRows = False
+                End If
+
+                ' Add Delete button column only if it hasn't been added yet
+                If dgEmployees.Columns("Delete") Is Nothing Then
+                    Dim deleteBtn As New DataGridViewButtonColumn()
+                    deleteBtn.HeaderText = "Delete"
+                    deleteBtn.Name = "Delete"
+                    deleteBtn.Text = "Delete"
+                    deleteBtn.UseColumnTextForButtonValue = True
+                    dgEmployees.Columns.Add(deleteBtn)
+                End If
             Catch ex As Exception
-                MessageBox.Show("Error loading employees: " & ex.Message)
+                MessageBox.Show("Error loading customers: " & ex.Message)
             End Try
         End Using
     End Sub
@@ -80,22 +101,34 @@ Public Class Employee
         txtPosition.Text = ""
     End Sub
 
-    Private Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
-        If dgEmployees.SelectedRows.Count > 0 Then
-            Dim selectedRow As DataGridViewRow = dgEmployees.SelectedRows(0)
-            txtEmployeeID.Text = selectedRow.Cells("EmployeeID").Value.ToString()
-            txtEmployeeName.Text = selectedRow.Cells("Name").Value.ToString()
-            txtPhone.Text = selectedRow.Cells("Phone").Value.ToString()
-            txtPosition.Text = selectedRow.Cells("Position").Value.ToString()
-        Else
-            MessageBox.Show("Please select an employee to edit.")
+
+    Private Sub dgEmployee_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgEmployees.CellContentClick
+        ' Check if the click is on a valid cell and not the header row
+        If e.RowIndex >= 0 Then
+            Dim selectedRow As DataGridViewRow = dgEmployees.Rows(e.RowIndex)
+            Dim employeeID As Integer = CInt(selectedRow.Cells("EmployeeID").Value)
+
+            ' Handle the Edit button click
+            If dgEmployees.Columns(e.ColumnIndex).Name = "Edit" Then
+                txtEmployeeID.Text = selectedRow.Cells("EmployeeID").Value.ToString()
+                txtEmployeeName.Text = selectedRow.Cells("Name").Value.ToString()
+                txtPhone.Text = selectedRow.Cells("Phone").Value.ToString()
+                txtPosition.Text = selectedRow.Cells("Position").Value.ToString()
+            End If
+
+            ' Handle the Delete button click
+            If dgEmployees.Columns(e.ColumnIndex).Name = "Delete" Then
+                Dim result As DialogResult = MessageBox.Show("Are you sure you want to delete this customer?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                If result = DialogResult.Yes Then
+                    deleteEmployee(employeeID)
+                    LoadEmployees()
+                End If
+            End If
         End If
     End Sub
 
-    Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
+    Private Sub deleteEmployee(employeeID As Integer)
         If dgEmployees.SelectedRows.Count > 0 Then
-            Dim employeeID As Integer = CInt(dgEmployees.SelectedRows(0).Cells("EmployeeID").Value)
-
             Dim query As String = "DELETE FROM Employee WHERE EmployeeID=@EmployeeID"
             Using conn As New SqlConnection(connectionString)
                 Try
@@ -113,6 +146,7 @@ Public Class Employee
             MessageBox.Show("Please select an employee to delete.")
         End If
     End Sub
+
     Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
         Dim searchText As String = txtSearch.Text
 
@@ -130,6 +164,56 @@ Public Class Employee
                 MessageBox.Show("Error searching employees: " & ex.Message)
             End Try
         End Using
+    End Sub
+
+    Private Sub dgCustomers_CellPainting(sender As Object, e As DataGridViewCellPaintingEventArgs) Handles dgEmployees.CellPainting
+        If e.ColumnIndex = dgEmployees.Columns("Delete").Index AndAlso e.RowIndex >= 0 Then
+            e.Handled = True
+            e.Graphics.FillRectangle(New SolidBrush(Color.White), e.CellBounds)
+
+            Dim buttonWidth As Integer = 80
+            Dim buttonHeight As Integer = 20
+            Dim buttonX As Integer = e.CellBounds.Left + (e.CellBounds.Width - buttonWidth) / 2
+            Dim buttonY As Integer = e.CellBounds.Top + (e.CellBounds.Height - buttonHeight) / 2
+
+            Dim buttonBounds As Rectangle = New Rectangle(buttonX, buttonY, buttonWidth, buttonHeight)
+
+            Dim path As Drawing2D.GraphicsPath = New Drawing2D.GraphicsPath()
+            Dim radius As Integer = 20
+            path.AddArc(buttonBounds.Left, buttonBounds.Top, radius, radius, 180, 90)
+            path.AddArc(buttonBounds.Right - radius, buttonBounds.Top, radius, radius, 270, 90)
+            path.AddArc(buttonBounds.Right - radius, buttonBounds.Bottom - radius, radius, radius, 0, 90)
+            path.AddArc(buttonBounds.Left, buttonBounds.Bottom - radius, radius, radius, 90, 90)
+            path.CloseAllFigures()
+
+            e.Graphics.FillPath(New SolidBrush(ColorTranslator.FromHtml("#FF6969")), path) ' Red color for Delete button
+
+            TextRenderer.DrawText(e.Graphics, "Delete", dgEmployees.Font, buttonBounds, Color.White, TextFormatFlags.HorizontalCenter Or TextFormatFlags.VerticalCenter)
+        End If
+
+        If e.ColumnIndex = dgEmployees.Columns("Edit").Index AndAlso e.RowIndex >= 0 Then
+            e.Handled = True
+            e.Graphics.FillRectangle(New SolidBrush(Color.White), e.CellBounds)
+
+            Dim buttonWidth As Integer = 80
+            Dim buttonHeight As Integer = 20
+            Dim buttonX As Integer = e.CellBounds.Left + (e.CellBounds.Width - buttonWidth) / 2
+            Dim buttonY As Integer = e.CellBounds.Top + (e.CellBounds.Height - buttonHeight) / 2
+
+            Dim buttonBounds As Rectangle = New Rectangle(buttonX, buttonY, buttonWidth, buttonHeight)
+
+            Dim path As Drawing2D.GraphicsPath = New Drawing2D.GraphicsPath()
+            Dim radius As Integer = 20
+            path.AddArc(buttonBounds.Left, buttonBounds.Top, radius, radius, 180, 90)
+            path.AddArc(buttonBounds.Right - radius, buttonBounds.Top, radius, radius, 270, 90)
+            path.AddArc(buttonBounds.Right - radius, buttonBounds.Bottom - radius, radius, radius, 0, 90)
+            path.AddArc(buttonBounds.Left, buttonBounds.Bottom - radius, radius, radius, 90, 90)
+            path.CloseAllFigures()
+
+            e.Graphics.FillPath(New SolidBrush(ColorTranslator.FromHtml("#1E90FF")), path) ' Blue color for Edit button
+
+            TextRenderer.DrawText(e.Graphics, "Edit", dgEmployees.Font, buttonBounds, Color.White, TextFormatFlags.HorizontalCenter Or TextFormatFlags.VerticalCenter)
+        End If
     End Sub
 
 End Class

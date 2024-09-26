@@ -7,6 +7,14 @@ Public Class Signup
     ' Connection string to your database
     Dim cnstr As String = "Data Source=RITIKJOSHI22\SQLEXPRESS;Initial Catalog=saloonManagementSystem;Integrated Security=True;TrustServerCertificate=True"
 
+    ' Path to your eye images
+    Dim eyeClosedPath As String = "C:\Users\Acer\Downloads\hide.png" ' Path to closed eye icon
+    Dim eyeOpenPath As String = "C:\Users\Acer\Downloads\view.png"     ' Path to open eye icon
+
+    ' Form Load Event to set the initial image
+    Private Sub Signup_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        picEye.Image = Image.FromFile(eyeClosedPath) ' Set the default eye-closed image
+    End Sub
 
     ' Function to hash the password using SHA256
     Private Function HashPassword(password As String) As String
@@ -60,7 +68,7 @@ Public Class Signup
         Dim hashedPassword As String = HashPassword(txtPassword.Text)
 
         ' Insert the user data into the database
-        Dim query As String = "INSERT INTO userData (FirstName, LastName, Username, Email, PasswordHash, DOB, Gender) VALUES (@fn, @ln, @un @email, @pwd, @birth, @gender)"
+        Dim query As String = "INSERT INTO userData (FirstName, LastName, Username, Email, PasswordHash, DOB, Gender) VALUES (@fn, @ln, @un, @email, @pwd, @birth, @gender)"
 
         Using con As New SqlConnection(cnstr)
             Using cmd As New SqlCommand(query, con)
@@ -76,6 +84,8 @@ Public Class Signup
                     con.Open()
                     cmd.ExecuteNonQuery()
                     MessageBox.Show("Sign-up successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Login.Show()
+                    Me.Close()
                 Catch ex As Exception
                     MessageBox.Show("Error: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Finally
@@ -94,5 +104,17 @@ Public Class Signup
     Private Sub btnBackToLogin_Click(sender As Object, e As EventArgs) Handles btnBackToLogin.Click
         Login.Show()
         Me.Close()
+    End Sub
+
+    Private Sub picEye_Click(sender As Object, e As EventArgs) Handles picEye.Click
+        If txtPassword.PasswordChar = "*"c Then
+            ' Change to visible (show password)
+            txtPassword.PasswordChar = ControlChars.NullChar
+            picEye.Image = Image.FromFile(eyeOpenPath) ' Change to eye-open image
+        Else
+            ' Change to hidden (mask password)
+            txtPassword.PasswordChar = "*"c
+            picEye.Image = Image.FromFile(eyeClosedPath) ' Change back to eye-closed image
+        End If
     End Sub
 End Class

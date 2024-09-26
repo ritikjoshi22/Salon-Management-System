@@ -3,14 +3,75 @@ Imports LiveCharts.Wpf
 Imports System.Data.SqlClient
 
 Public Class Dashboard
+
+    Private userFirstName As String
+    Private ProfilePicture As Byte()
+
+    ' Constructor to initialize the form with the user's role
+    Public Sub New(userFirstName As String, ProfilePicture As Byte())
+        InitializeComponent()
+        Me.userFirstName = userFirstName
+        Me.ProfilePicture = ProfilePicture
+    End Sub
+
     ' Connection string to your database
     Dim connectionString As String = "Data Source=RITIKJOSHI22\SQLEXPRESS;Initial Catalog=saloonManagementSystem;Integrated Security=True;Encrypt=True;TrustServerCertificate=True"
 
     ' Load event for the form
     Private Sub Dashboard_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim profileImg As Image = ConvertByteArrayToImage(ProfilePicture)
+        lblName.Text += userFirstName.ToString()
+        Guna2CirclePictureBox1.Image = profileImg
         LoadRevenueData("1Y")
         LoadPieChart()
+
+        Try
+            Using conn As New SqlConnection(connectionString)
+                conn.Open()
+
+                ' Query to count the total number of customers
+                Dim customerCountQuery As String = "SELECT COUNT(*) FROM Customer"
+                Dim customerCount As Integer = ExecuteScalarQuery(conn, customerCountQuery)
+                totalCtm.Text = customerCount.ToString()
+
+                ' Query to count the total number of employees
+                Dim employeeCountQuery As String = "SELECT COUNT(*) FROM Employee"
+                Dim employeeCount As Integer = ExecuteScalarQuery(conn, employeeCountQuery)
+                totalEmp.Text = employeeCount.ToString()
+
+                ' Query to count the total number of services
+                Dim serviceCountQuery As String = "SELECT COUNT(*) FROM Service"
+                Dim serviceCount As Integer = ExecuteScalarQuery(conn, serviceCountQuery)
+                totalServices.Text = serviceCount.ToString()
+
+                ' Query to count the total number of products
+                Dim productCountQuery As String = "SELECT COUNT(*) FROM Product"
+                Dim productCount As Integer = ExecuteScalarQuery(conn, productCountQuery)
+                totalProduct.Text = productCount.ToString()
+            End Using
+
+        Catch ex As Exception
+            MessageBox.Show("Error retrieving data: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
+
+    Private Function ConvertByteArrayToImage(byteArray As Byte()) As Image
+        Using ms As New IO.MemoryStream(byteArray)
+            Return Image.FromStream(ms)
+        End Using
+    End Function
+
+    ' Helper function to execute scalar queries
+    Private Function ExecuteScalarQuery(conn As SqlConnection, query As String) As Integer
+        Using cmd As New SqlCommand(query, conn)
+            Dim result As Object = cmd.ExecuteScalar()
+            If result IsNot DBNull.Value Then
+                Return Convert.ToInt32(result)
+            Else
+                Return 0
+            End If
+        End Using
+    End Function
 
     ' Method to load the pie chart with product data
     Private Sub LoadPieChart()

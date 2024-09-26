@@ -19,8 +19,29 @@ Public Class Inventory
                 Dim dt As New DataTable()
                 adapter.Fill(dt)
                 dgInventory.DataSource = dt
+
+                ' Add Edit button column only if it hasn't been added yet
+                If dgInventory.Columns("Edit") Is Nothing Then
+                    Dim btnEdit As New DataGridViewButtonColumn()
+                    btnEdit.HeaderText = "Edit"
+                    btnEdit.Name = "Edit"
+                    btnEdit.Text = "Edit"
+                    btnEdit.UseColumnTextForButtonValue = True
+                    dgInventory.Columns.Add(btnEdit)
+                    dgInventory.AllowUserToAddRows = False
+                End If
+
+                ' Add Delete button column only if it hasn't been added yet
+                If dgInventory.Columns("Delete") Is Nothing Then
+                    Dim deleteBtn As New DataGridViewButtonColumn()
+                    deleteBtn.HeaderText = "Delete"
+                    deleteBtn.Name = "Delete"
+                    deleteBtn.Text = "Delete"
+                    deleteBtn.UseColumnTextForButtonValue = True
+                    dgInventory.Columns.Add(deleteBtn)
+                End If
             Catch ex As Exception
-                MessageBox.Show("Error loading inventory: " & ex.Message)
+                MessageBox.Show("Error loading customers: " & ex.Message)
             End Try
         End Using
     End Sub
@@ -119,10 +140,37 @@ Public Class Inventory
         txtCategory.Text = ""
         dtpExpiryDate.Value = DateTime.Now
     End Sub
-    Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
-        If dgInventory.SelectedRows.Count > 0 Then
-            Dim productID As Integer = CInt(dgInventory.SelectedRows(0).Cells("product_id").Value)
 
+    Private Sub dgInventory_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgInventory.CellContentClick
+        ' Check if the click is on a valid cell and not the header row
+        If e.RowIndex >= 0 Then
+            Dim selectedRow As DataGridViewRow = dgInventory.Rows(e.RowIndex)
+            Dim productID As Integer = CInt(selectedRow.Cells("product_id").Value)
+
+            ' Handle the Edit button click
+            If dgInventory.Columns(e.ColumnIndex).Name = "Edit" Then
+                txtProductID.Text = selectedRow.Cells("product_id").Value.ToString()
+                txtProductName.Text = selectedRow.Cells("product_name").Value.ToString()
+                txtQuantity.Text = selectedRow.Cells("quantity").Value.ToString()
+                txtPrice.Text = selectedRow.Cells("price").Value.ToString()
+                txtSupplier.Text = selectedRow.Cells("supplier").Value.ToString()
+                txtCategory.Text = selectedRow.Cells("category").Value.ToString()
+                dtpExpiryDate.Value = Convert.ToDateTime(selectedRow.Cells("expiration_date").Value)
+            End If
+
+            ' Handle the Delete button click
+            If dgInventory.Columns(e.ColumnIndex).Name = "Delete" Then
+                Dim result As DialogResult = MessageBox.Show("Are you sure you want to delete this customer?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                If result = DialogResult.Yes Then
+                    deleteInventory(productID)
+                    LoadInventory()
+                End If
+            End If
+        End If
+    End Sub
+
+    Private Sub deleteInventory(productID As Integer)
+        If dgInventory.SelectedRows.Count > 0 Then
             Dim query As String = "DELETE FROM product WHERE product_id=@ProductID"
             Using conn As New SqlConnection(connectionString)
                 Try
@@ -178,20 +226,55 @@ Public Class Inventory
         e.Graphics.DrawImage(bm, 0, 0)
     End Sub
 
-    Private Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
-        If dgInventory.SelectedRows.Count > 0 Then
-            Dim selectedRow As DataGridViewRow = dgInventory.SelectedRows(0)
-            txtProductID.Text = selectedRow.Cells("product_id").Value.ToString()
-            txtProductName.Text = selectedRow.Cells("product_name").Value.ToString()
-            txtQuantity.Text = selectedRow.Cells("quantity").Value.ToString()
-            txtPrice.Text = selectedRow.Cells("price").Value.ToString()
-            txtSupplier.Text = selectedRow.Cells("supplier").Value.ToString()
-            txtCategory.Text = selectedRow.Cells("category").Value.ToString()
-            dtpExpiryDate.Value = Convert.ToDateTime(selectedRow.Cells("expiration_date").Value)
-        Else
-            MessageBox.Show("Please select a product to edit.")
+
+    Private Sub dgCustomers_CellPainting(sender As Object, e As DataGridViewCellPaintingEventArgs) Handles dgInventory.CellPainting
+        If e.ColumnIndex = dgInventory.Columns("Delete").Index AndAlso e.RowIndex >= 0 Then
+            e.Handled = True
+            e.Graphics.FillRectangle(New SolidBrush(Color.White), e.CellBounds)
+
+            Dim buttonWidth As Integer = 80
+            Dim buttonHeight As Integer = 20
+            Dim buttonX As Integer = e.CellBounds.Left + (e.CellBounds.Width - buttonWidth) / 2
+            Dim buttonY As Integer = e.CellBounds.Top + (e.CellBounds.Height - buttonHeight) / 2
+
+            Dim buttonBounds As Rectangle = New Rectangle(buttonX, buttonY, buttonWidth, buttonHeight)
+
+            Dim path As Drawing2D.GraphicsPath = New Drawing2D.GraphicsPath()
+            Dim radius As Integer = 20
+            path.AddArc(buttonBounds.Left, buttonBounds.Top, radius, radius, 180, 90)
+            path.AddArc(buttonBounds.Right - radius, buttonBounds.Top, radius, radius, 270, 90)
+            path.AddArc(buttonBounds.Right - radius, buttonBounds.Bottom - radius, radius, radius, 0, 90)
+            path.AddArc(buttonBounds.Left, buttonBounds.Bottom - radius, radius, radius, 90, 90)
+            path.CloseAllFigures()
+
+            e.Graphics.FillPath(New SolidBrush(ColorTranslator.FromHtml("#FF6969")), path) ' Red color for Delete button
+
+            TextRenderer.DrawText(e.Graphics, "Delete", dgInventory.Font, buttonBounds, Color.White, TextFormatFlags.HorizontalCenter Or TextFormatFlags.VerticalCenter)
+        End If
+
+        If e.ColumnIndex = dgInventory.Columns("Edit").Index AndAlso e.RowIndex >= 0 Then
+            e.Handled = True
+            e.Graphics.FillRectangle(New SolidBrush(Color.White), e.CellBounds)
+
+            Dim buttonWidth As Integer = 80
+            Dim buttonHeight As Integer = 20
+            Dim buttonX As Integer = e.CellBounds.Left + (e.CellBounds.Width - buttonWidth) / 2
+            Dim buttonY As Integer = e.CellBounds.Top + (e.CellBounds.Height - buttonHeight) / 2
+
+            Dim buttonBounds As Rectangle = New Rectangle(buttonX, buttonY, buttonWidth, buttonHeight)
+
+            Dim path As Drawing2D.GraphicsPath = New Drawing2D.GraphicsPath()
+            Dim radius As Integer = 20
+            path.AddArc(buttonBounds.Left, buttonBounds.Top, radius, radius, 180, 90)
+            path.AddArc(buttonBounds.Right - radius, buttonBounds.Top, radius, radius, 270, 90)
+            path.AddArc(buttonBounds.Right - radius, buttonBounds.Bottom - radius, radius, radius, 0, 90)
+            path.AddArc(buttonBounds.Left, buttonBounds.Bottom - radius, radius, radius, 90, 90)
+            path.CloseAllFigures()
+
+            e.Graphics.FillPath(New SolidBrush(ColorTranslator.FromHtml("#1E90FF")), path) ' Blue color for Edit button
+
+            TextRenderer.DrawText(e.Graphics, "Edit", dgInventory.Font, buttonBounds, Color.White, TextFormatFlags.HorizontalCenter Or TextFormatFlags.VerticalCenter)
         End If
     End Sub
-
 
 End Class

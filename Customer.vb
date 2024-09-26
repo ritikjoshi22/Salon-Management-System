@@ -1,4 +1,6 @@
 ﻿Imports System.Data.SqlClient
+Imports System.Web.UI.WebControls
+Imports Guna.UI2.WinForms
 
 Public Class Customer
     Dim connectionString As String = "Data Source=RITIKJOSHI22\SQLEXPRESS;Initial Catalog=saloonManagementSystem;Integrated Security=True;Encrypt=True;TrustServerCertificate=True"
@@ -8,6 +10,8 @@ Public Class Customer
         LoadCustomers()
     End Sub
 
+    ' Function to load customers into DataGridView
+    ' Function to load customers into DataGridView
     ' Function to load customers into DataGridView
     Private Sub LoadCustomers()
         Dim query As String = "SELECT CustomerID, Name, Phone, Email FROM Customer"
@@ -19,11 +23,84 @@ Public Class Customer
                 Dim dt As New DataTable()
                 adapter.Fill(dt)
                 dgCustomers.DataSource = dt
+
+                ' Add Edit button column only if it hasn't been added yet
+                If dgCustomers.Columns("Edit") Is Nothing Then
+                    Dim btnEdit As New DataGridViewButtonColumn()
+                    btnEdit.HeaderText = "Edit"
+                    btnEdit.Name = "Edit"
+                    btnEdit.Text = "Edit"
+                    btnEdit.UseColumnTextForButtonValue = True
+                    dgCustomers.Columns.Add(btnEdit)
+                    dgCustomers.AllowUserToAddRows = False
+                End If
+
+                ' Add Delete button column only if it hasn't been added yet
+                If dgCustomers.Columns("Delete") Is Nothing Then
+                    Dim deleteBtn As New DataGridViewButtonColumn()
+                    deleteBtn.HeaderText = "Delete"
+                    deleteBtn.Name = "Delete"
+                    deleteBtn.Text = "Delete"
+                    deleteBtn.UseColumnTextForButtonValue = True
+                    dgCustomers.Columns.Add(deleteBtn)
+                End If
             Catch ex As Exception
                 MessageBox.Show("Error loading customers: " & ex.Message)
             End Try
         End Using
     End Sub
+
+    Private Sub dgCustomers_CellPainting(sender As Object, e As DataGridViewCellPaintingEventArgs) Handles dgCustomers.CellPainting
+        If e.ColumnIndex = dgCustomers.Columns("Delete").Index AndAlso e.RowIndex >= 0 Then
+            e.Handled = True
+            e.Graphics.FillRectangle(New SolidBrush(Color.White), e.CellBounds)
+
+            Dim buttonWidth As Integer = 80
+            Dim buttonHeight As Integer = 20
+            Dim buttonX As Integer = e.CellBounds.Left + (e.CellBounds.Width - buttonWidth) / 2
+            Dim buttonY As Integer = e.CellBounds.Top + (e.CellBounds.Height - buttonHeight) / 2
+
+            Dim buttonBounds As Rectangle = New Rectangle(buttonX, buttonY, buttonWidth, buttonHeight)
+
+            Dim path As Drawing2D.GraphicsPath = New Drawing2D.GraphicsPath()
+            Dim radius As Integer = 20
+            path.AddArc(buttonBounds.Left, buttonBounds.Top, radius, radius, 180, 90)
+            path.AddArc(buttonBounds.Right - radius, buttonBounds.Top, radius, radius, 270, 90)
+            path.AddArc(buttonBounds.Right - radius, buttonBounds.Bottom - radius, radius, radius, 0, 90)
+            path.AddArc(buttonBounds.Left, buttonBounds.Bottom - radius, radius, radius, 90, 90)
+            path.CloseAllFigures()
+
+            e.Graphics.FillPath(New SolidBrush(ColorTranslator.FromHtml("#FF6969")), path) ' Red color for Delete button
+
+            TextRenderer.DrawText(e.Graphics, "Delete", dgCustomers.Font, buttonBounds, Color.White, TextFormatFlags.HorizontalCenter Or TextFormatFlags.VerticalCenter)
+        End If
+
+        If e.ColumnIndex = dgCustomers.Columns("Edit").Index AndAlso e.RowIndex >= 0 Then
+            e.Handled = True
+            e.Graphics.FillRectangle(New SolidBrush(Color.White), e.CellBounds)
+
+            Dim buttonWidth As Integer = 80
+            Dim buttonHeight As Integer = 20
+            Dim buttonX As Integer = e.CellBounds.Left + (e.CellBounds.Width - buttonWidth) / 2
+            Dim buttonY As Integer = e.CellBounds.Top + (e.CellBounds.Height - buttonHeight) / 2
+
+            Dim buttonBounds As Rectangle = New Rectangle(buttonX, buttonY, buttonWidth, buttonHeight)
+
+            Dim path As Drawing2D.GraphicsPath = New Drawing2D.GraphicsPath()
+            Dim radius As Integer = 20
+            path.AddArc(buttonBounds.Left, buttonBounds.Top, radius, radius, 180, 90)
+            path.AddArc(buttonBounds.Right - radius, buttonBounds.Top, radius, radius, 270, 90)
+            path.AddArc(buttonBounds.Right - radius, buttonBounds.Bottom - radius, radius, radius, 0, 90)
+            path.AddArc(buttonBounds.Left, buttonBounds.Bottom - radius, radius, radius, 90, 90)
+            path.CloseAllFigures()
+
+            e.Graphics.FillPath(New SolidBrush(ColorTranslator.FromHtml("#1E90FF")), path) ' Blue color for Edit button
+
+            TextRenderer.DrawText(e.Graphics, "Edit", dgCustomers.Font, buttonBounds, Color.White, TextFormatFlags.HorizontalCenter Or TextFormatFlags.VerticalCenter)
+        End If
+    End Sub
+
+
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         Dim customerName As String = txtCustomerName.Text
@@ -80,39 +157,48 @@ Public Class Customer
         txtEmail.Text = ""
     End Sub
 
-    Private Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
-        If dgCustomers.SelectedRows.Count > 0 Then
-            Dim selectedRow As DataGridViewRow = dgCustomers.SelectedRows(0)
-            txtCustomerID.Text = selectedRow.Cells("CustomerID").Value.ToString()
-            txtCustomerName.Text = selectedRow.Cells("Name").Value.ToString()
-            txtPhone.Text = selectedRow.Cells("Phone").Value.ToString()
-            txtEmail.Text = selectedRow.Cells("Email").Value.ToString()
-        Else
-            MessageBox.Show("Please select a customer to edit.")
-        End If
-    End Sub
+    Private Sub dgCustomers_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgCustomers.CellContentClick
+        ' Check if the click is on a valid cell and not the header row
+        If e.RowIndex >= 0 Then
+            Dim selectedRow As DataGridViewRow = dgCustomers.Rows(e.RowIndex)
+            Dim customerID As Integer = CInt(selectedRow.Cells("CustomerID").Value)
 
-    Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
-        If dgCustomers.SelectedRows.Count > 0 Then
-            Dim customerID As Integer = CInt(dgCustomers.SelectedRows(0).Cells("CustomerID").Value)
+            ' Handle the Edit button click
+            If dgCustomers.Columns(e.ColumnIndex).Name = "Edit" Then
+                txtCustomerID.Text = customerID.ToString()
+                txtCustomerName.Text = selectedRow.Cells("Name").Value.ToString()
+                txtPhone.Text = selectedRow.Cells("Phone").Value.ToString()
+                txtEmail.Text = selectedRow.Cells("Email").Value.ToString()
+            End If
 
-            Dim query As String = "DELETE FROM Customer WHERE CustomerID=@CustomerID"
-            Using conn As New SqlConnection(connectionString)
-                Try
-                    conn.Open()
-                    Dim cmd As New SqlCommand(query, conn)
-                    cmd.Parameters.AddWithValue("@CustomerID", customerID)
-                    cmd.ExecuteNonQuery()
-                    MessageBox.Show("Customer deleted successfully!")
+            ' Handle the Delete button click
+            If dgCustomers.Columns(e.ColumnIndex).Name = "Delete" Then
+                Dim result As DialogResult = MessageBox.Show("Are you sure you want to delete this customer?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                If result = DialogResult.Yes Then
+                    DeleteCustomer(customerID)
                     LoadCustomers()
-                Catch ex As Exception
-                    MessageBox.Show("Error deleting customer: " & ex.Message)
-                End Try
-            End Using
-        Else
-            MessageBox.Show("Please select a customer to delete.")
+                End If
+            End If
         End If
     End Sub
+
+    ' Function to delete customer
+    Private Sub DeleteCustomer(customerID As Integer)
+        Dim query As String = "DELETE FROM Customer WHERE CustomerID=@CustomerID"
+        Using conn As New SqlConnection(connectionString)
+            Try
+                conn.Open()
+                Dim cmd As New SqlCommand(query, conn)
+                cmd.Parameters.AddWithValue("@CustomerID", customerID)
+                cmd.ExecuteNonQuery()
+                MessageBox.Show("Customer deleted successfully!")
+                LoadCustomers()
+            Catch ex As Exception
+                MessageBox.Show("Error deleting customer: " & ex.Message)
+            End Try
+        End Using
+    End Sub
+
 
     Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
         Dim searchText As String = txtSearch.Text
@@ -132,5 +218,4 @@ Public Class Customer
             End Try
         End Using
     End Sub
-
 End Class
