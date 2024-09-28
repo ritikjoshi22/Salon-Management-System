@@ -1,4 +1,4 @@
-💇‍♀️💅 Saloon Management System 💇‍♂️💆‍♂️
+<div>💇‍♀️Saloon Management System 💇‍♂️💆‍♂️<div/><br><br><br>
 Welcome to the Saloon Management System — an all-in-one solution designed to streamline salon operations, developed as part of our 4th-semester Project-II by Ritik Joshi and Sarthak Adhikari. This system provides an efficient way to manage appointments, employees, inventory, services, customers, and revenue tracking.
 
 🌟 Features Overview
@@ -37,25 +37,25 @@ Quick Checkout: Fast and smooth checkout process with revenue storage.
 Programming Language: VB.NET
 Database: Microsoft SQL Server
 UI Framework: Guna.UI2, Windows Forms
-Charts Library: LiveCharts
-🔧 Installation Instructions
-Clone the repository:
+Charts Library: LiveCharts<br><br>
+🔧 Installation Instructions<br>
+1.Clone the repository:
 bash
-Copy code
+Copy code:
 git clone https://github.com/your-repo/saloon-management-system.git
-Open in Visual Studio and restore NuGet packages.
-Configure the Database Connection: Update connectionString with your SQL Server details.
-Run the Application and enjoy the streamlined salon management experience!
-💻 Screenshots
-Dashboard	Appointment Scheduling	Customer Management
-🤝 Contributing
-We welcome contributions to enhance this project! Feel free to open issues, suggest features, or submit pull requests.
+<br>2.Open in Visual Studio and restore NuGet packages.<br>
+3.Configure the Database Connection: Update connectionString with your SQL Server details.<br>
+4.Run the Application and enjoy the streamlined salon management experience!<br>
+💻 Screenshots<br>
+Dashboard	Appointment Scheduling	Customer Management<br>
+🤝 Contributing<>br
+We welcome contributions to enhance this project! Feel free to open issues, suggest features, or submit pull requests.<br><br>
 
-🎯 Future Enhancements
-Online Booking: Allow customers to book appointments online.
-Email Notifications: Automated email reminders for appointments.
-Employee Performance Tracking: Track employee performance and generate reports.
-📞 Contact Us
-Ritik Joshi - https://www.linkedin.com/in/ritik-joshi-68317a267/
-Sarthak Adhikari - 
+🎯 Future Enhancements<br>
+Online Booking: Allow customers to book appointments online.<br>
+Email Notifications: Automated email reminders for appointments.<br>
+Employee Performance Tracking: Track employee performance and generate reports.<br><br>
+📞 Contact Us<br>
+Ritik Joshi - https://www.linkedin.com/in/ritik-joshi-68317a267/<br>
+Sarthak Adhikari - <br>
 We hope our salon management system transforms the way salons operate, providing seamless management, boosting efficiency, and enhancing customer satisfaction! 😊
