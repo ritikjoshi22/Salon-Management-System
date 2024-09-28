@@ -30,16 +30,16 @@ Partial Class RescheduleAppointmentForm
         Me.btnSave = New Guna.UI2.WinForms.Guna2Button()
         Me.cbService = New Guna.UI2.WinForms.Guna2ComboBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Guna2CirclePictureBox1 = New Guna.UI2.WinForms.Guna2CirclePictureBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Guna2CirclePictureBox1 = New Guna.UI2.WinForms.Guna2CirclePictureBox()
         Me.Panel1.SuspendLayout()
-        CType(Me.Guna2CirclePictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
+        CType(Me.Guna2CirclePictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'dtpReschedule
         '
-        Me.dtpReschedule.Location = New System.Drawing.Point(268, 303)
+        Me.dtpReschedule.Location = New System.Drawing.Point(372, 324)
         Me.dtpReschedule.Name = "dtpReschedule"
         Me.dtpReschedule.Size = New System.Drawing.Size(301, 22)
         Me.dtpReschedule.TabIndex = 18
@@ -48,7 +48,7 @@ Partial Class RescheduleAppointmentForm
         '
         Me.GunaLabel4.AutoSize = True
         Me.GunaLabel4.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.GunaLabel4.Location = New System.Drawing.Point(99, 303)
+        Me.GunaLabel4.Location = New System.Drawing.Point(188, 324)
         Me.GunaLabel4.Name = "GunaLabel4"
         Me.GunaLabel4.Size = New System.Drawing.Size(133, 20)
         Me.GunaLabel4.TabIndex = 17
@@ -58,7 +58,7 @@ Partial Class RescheduleAppointmentForm
         '
         Me.GunaLabel3.AutoSize = True
         Me.GunaLabel3.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.GunaLabel3.Location = New System.Drawing.Point(170, 240)
+        Me.GunaLabel3.Location = New System.Drawing.Point(274, 261)
         Me.GunaLabel3.Name = "GunaLabel3"
         Me.GunaLabel3.Size = New System.Drawing.Size(62, 20)
         Me.GunaLabel3.TabIndex = 16
@@ -84,7 +84,7 @@ Partial Class RescheduleAppointmentForm
         Me.btnSave.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.btnSave.ForeColor = System.Drawing.Color.White
         Me.btnSave.HoverState.Parent = Me.btnSave
-        Me.btnSave.Location = New System.Drawing.Point(246, 430)
+        Me.btnSave.Location = New System.Drawing.Point(350, 451)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.ShadowDecoration.Parent = Me.btnSave
         Me.btnSave.Size = New System.Drawing.Size(213, 45)
@@ -105,7 +105,7 @@ Partial Class RescheduleAppointmentForm
         Me.cbService.HoverState.Parent = Me.cbService
         Me.cbService.ItemHeight = 30
         Me.cbService.ItemsAppearance.Parent = Me.cbService
-        Me.cbService.Location = New System.Drawing.Point(268, 224)
+        Me.cbService.Location = New System.Drawing.Point(372, 245)
         Me.cbService.Name = "cbService"
         Me.cbService.ShadowDecoration.Parent = Me.cbService
         Me.cbService.Size = New System.Drawing.Size(301, 36)
@@ -120,8 +120,17 @@ Partial Class RescheduleAppointmentForm
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(750, 100)
+        Me.Panel1.Size = New System.Drawing.Size(896, 100)
         Me.Panel1.TabIndex = 19
+        '
+        'Panel2
+        '
+        Me.Panel2.Controls.Add(Me.Guna2CirclePictureBox1)
+        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Panel2.Location = New System.Drawing.Point(800, 0)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(96, 100)
+        Me.Panel2.TabIndex = 15
         '
         'Guna2CirclePictureBox1
         '
@@ -136,21 +145,12 @@ Partial Class RescheduleAppointmentForm
         Me.Guna2CirclePictureBox1.TabIndex = 15
         Me.Guna2CirclePictureBox1.TabStop = False
         '
-        'Panel2
-        '
-        Me.Panel2.Controls.Add(Me.Guna2CirclePictureBox1)
-        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel2.Location = New System.Drawing.Point(654, 0)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(96, 100)
-        Me.Panel2.TabIndex = 15
-        '
         'RescheduleAppointmentForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(750, 700)
+        Me.ClientSize = New System.Drawing.Size(896, 700)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.dtpReschedule)
         Me.Controls.Add(Me.GunaLabel4)
@@ -163,8 +163,8 @@ Partial Class RescheduleAppointmentForm
         Me.Text = "RescheduleAppointmentForm"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
-        CType(Me.Guna2CirclePictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
+        CType(Me.Guna2CirclePictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

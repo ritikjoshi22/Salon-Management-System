@@ -19,15 +19,7 @@ Public Class Services
         Me.role = role
     End Sub
 
-    ' Function to show child form inside Panel1
-    Sub childform(ByVal panel As Form)
-        Panel1.Controls.Clear()
-        panel.TopLevel = False
-        panel.FormBorderStyle = Windows.Forms.FormBorderStyle.None
-        panel.Dock = DockStyle.Fill
-        Panel1.Controls.Add(panel)
-        panel.Show()
-    End Sub
+    ' Function to show child form inside Panel
 
     Private Sub RoundButton(btn As Button)
 
@@ -64,6 +56,9 @@ Public Class Services
     End Sub
 
     Private Sub Services_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If role = "User" Then
+            btnNew.Enabled = False
+        End If
         FlowLayoutPanel1.Padding = New Padding(0, 0, 0, 0)
         RoundButton(btnHaircut)
         RoundButton(btnHaircolor)
@@ -170,6 +165,7 @@ Public Class Services
         ' Get the button that was clicked
         Dim btnAddToCart As Button = DirectCast(sender, Button)
         Dim servicePanel As Panel = DirectCast(btnAddToCart.Parent, Panel)
+        Dim serviceID As Integer
 
         ' Retrieve service details from the panel controls
         Dim lblName As Label = servicePanel.Controls.OfType(Of Label).FirstOrDefault(Function(lbl) lbl.Location = New Point(181, 12))
@@ -177,8 +173,10 @@ Public Class Services
         Dim pbService As PictureBox = servicePanel.Controls.OfType(Of PictureBox).FirstOrDefault()
 
         ' Retrieve the ServiceID from the panel (using the Tag property of the "X" button)
-        Dim btnRemove As Button = servicePanel.Controls.OfType(Of Button).FirstOrDefault(Function(btn) btn.Text = "X")
-        Dim serviceID As Integer = CInt(btnRemove.Tag)
+        If role = "Admin" Or role = "Manager" Then
+            Dim btnRemove As Button = servicePanel.Controls.OfType(Of Button).FirstOrDefault(Function(btn) btn.Text = "X")
+            serviceID = CInt(btnRemove.Tag)
+        End If
 
         ' Get service details
         Dim serviceName As String = lblName.Text

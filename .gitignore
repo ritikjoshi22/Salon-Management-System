@@ -1,0 +1,10 @@
+packages
+.vs
+*.exe
+*.pdb
+*.manifest
+*.xml
+*.log
+*.scc
+saloon-management-system/bin
+saloon-management-system/obj
