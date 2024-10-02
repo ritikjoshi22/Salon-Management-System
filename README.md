@@ -57,5 +57,5 @@ Email Notifications: Automated email reminders for appointments.<br>
 Employee Performance Tracking: Track employee performance and generate reports.<br><br>
 📞 Contact Us<br>
 Ritik Joshi - https://www.linkedin.com/in/ritik-joshi-68317a267/<br>
-Sarthak Adhikari - <br>
+Sarthak Adhikari - https://www.linkedin.com/in/sarthak-adhikari-167636330/<br>
 We hope our salon management system transforms the way salons operate, providing seamless management, boosting efficiency, and enhancing customer satisfaction! 😊
